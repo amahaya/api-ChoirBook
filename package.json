@@ -1,0 +1,27 @@
+{
+  "name": "choirbook",
+  "version": "1.0.0",
+  "description": "A social network for choirs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amahaya/api-choirbook.git"
+  },
+  "keywords": [
+    "server.api.choirbook.rest"
+  ],
+  "author": "Amahaya Seth Regis NOUMETON",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amahaya/api-choirbook/issues"
+  },
+  "homepage": "https://github.com/amahaya/api-choirbook#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.2.0"
+  }
+}
