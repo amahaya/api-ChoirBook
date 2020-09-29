@@ -4,7 +4,10 @@
   "description": "A social network for choirs",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "migration:reload": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "seed:reload": "sequelize db:seed:undo:all && sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,8 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "sequelize": "^6.2.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
