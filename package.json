@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/amahaya/api-choirbook#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.2.0"
