@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/amahaya/api-choirbook#readme",
   "dependencies": {
+    "async": "^3.2.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",

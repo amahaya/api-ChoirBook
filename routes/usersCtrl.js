@@ -2,7 +2,10 @@
 const bcrypt = require("bcrypt");
 const jwtUtils = require("../utils/jwt.utils");
 const models = require("../models");
+const asyncLib = require("async");
 
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PASSWORD_REGEX = /^(?=.*\d).{4,8}$/
 // Routes
 module.exports = {
   register: function (req, res) {
@@ -28,10 +31,22 @@ module.exports = {
       !city
     ) {
       // === if (email === null || username === null || ...)
-      return res.status(400).json({ error: "Missing parameter" });
+      return res.status(400).json({ 'error': 'Missing parameter' });
     }
 
-    //TO DO Regex
+    if (username.length >=15 || username<=4) {
+        return res.status(400).json({ 'error': 'Wrong username (must be length 4-15)' });
+    }
+
+    // Regex
+
+    if (!EMAIL_REGEX.test(email)) {
+        return res.status(400).json({'error': 'email is not valid'});
+    }
+
+    if (!PASSWORD_REGEX.test(password)) {
+        return res.status(400).json({'error': 'password invalid (must length 4-8 and include at least one numeric digit'});
+    }
 
     models.User.findOne({
       attributes: ["email"],
@@ -101,5 +116,27 @@ module.exports = {
       .catch(function(err) {
           return res.status(500).json ({'error': 'unable to verify user'});
       });
+    },
+
+getUserProfile: function(req, res) {
+  // Getting auth header
+  const headersAuth = req.headers["authorization"];
+  const userId = jwtUtils.getUserId(headersAuth);
+
+  if (userId < 0)
+    return res.status(401).json ({ 'error': 'wrong token'});
+
+  models.User.findOne({
+    attributes: [ 'id', 'firstName', 'lastName', 'username', 'email', 'birthday', 'city', 'bio'],
+    where: { id:userId}
+  }) .then(function (user) {
+    if (user) {
+      res.status(201).json(user);
+    } else {
+      res.status(404).json({'error': 'user not found'});
     }
+  }).catch(function(err) {
+    res.status(500).json({'error': 'cannot fetch user '});
+  });
+}
 }
