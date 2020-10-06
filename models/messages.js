@@ -13,13 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.Message.belongsTo(models.User, {
         foreignKey:{
-          foreignKey: "idUSERS",
+          foreignKey: "userId",
         }
       })
     }
   };
   Message.init({
-    idUSERS: DataTypes.INTEGER,
+    title: DataTypes.STRING,
     content: DataTypes.STRING,
     attachement: DataTypes.STRING,
     likes: DataTypes.INTEGER

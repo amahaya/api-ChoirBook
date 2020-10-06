@@ -22,13 +22,7 @@ module.exports = {
     console.log(req.body);
 
     if (
-      !firstName ||
-      !lastName ||
-      !username ||
-      !email ||
-      !password ||
-      !birthday ||
-      !city
+      !firstName || !lastName || !username || !email || !password || !birthday || !city
     ) {
       // === if (email === null || username === null || ...)
       return res.status(400).json({ 'error': 'Missing parameter' });
