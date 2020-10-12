@@ -153,10 +153,14 @@ getUserProfile: function(req, res) {
 
 deleteUserProfile: function(req, res) {
   const id = req.params.userId;
-  console.log(id)
-  const deleteUser = models.User.destroy( { where:{id} });
-
+  try {
+    const deleteUser = models.User.destroy( { where:{id} });
       res.status(201).json({ succes: `Profil deleted` });
+
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+
 
 },
 

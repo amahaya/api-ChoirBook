@@ -22,7 +22,8 @@ exports.router = (function() {
     //Messages Routes
     apiRouter.route('/messages/new/').post(messagesCtrl.createMessage);
     apiRouter.route('/messages/').get(messagesCtrl.getMessage);
-
+    apiRouter.route('/messages/update/:id').put(messagesCtrl.updateMessage)
+    apiRouter.route('/messages/delete/:id').delete(messagesCtrl.deleteMessage);
 
 
 
