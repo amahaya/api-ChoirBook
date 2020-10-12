@@ -84,7 +84,7 @@ module.exports = {
         return res.status(400).json({'error':'missing parameters'});
   }
 
-      //TO DO Regex
+      // Regex
 
       models.User.findOne({
           where: { email: email}
@@ -135,7 +135,29 @@ getUserProfile: function(req, res) {
 },
 
  //TO DO IMPORTANT
-  updateUserProfile: function(req, res){
 
-  }
+   updateUserProfile: function(req, res) {
+    const data = req.body;
+    const id = req.params.userId;
+    console.log(data)
+    const updateUser = models.User.update(data, { where:{id} });
+      if (updateUser) {
+        const tutu = models.User.findOne({
+          where: {id},
+        }).then(function (user) {
+            res.status(201).json(user);
+         })
+      }
+},
+
+
+deleteUserProfile: function(req, res) {
+  const id = req.params.userId;
+  console.log(id)
+  const deleteUser = models.User.destroy( { where:{id} });
+
+      res.status(201).json({ succes: `Profil deleted` });
+
+},
+
 }

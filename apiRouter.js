@@ -13,6 +13,11 @@ exports.router = (function() {
     apiRouter.route('/users/register/').post(usersCtrl.register);
     apiRouter.route('/users/login/').post(usersCtrl.login);
     apiRouter.route('/users/test/').get(usersCtrl.getUserProfile);
+    apiRouter.route('/users/update/:userId').put(usersCtrl.updateUserProfile);
+
+    apiRouter.route('/users/delete/:userId').delete(usersCtrl.deleteUserProfile);
+
+
 
     //Messages Routes
     apiRouter.route('/messages/new/').post(messagesCtrl.createMessage);
