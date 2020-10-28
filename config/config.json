@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "database_development",
+    "database": "choirbook_database_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "root",
-    "database": "database_test",
+    "database": "choirbook_database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "root",
-    "database": "database_production",
+    "database": "choirbook_database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
