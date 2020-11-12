@@ -1,10 +1,14 @@
 //imports
 const express = require('express');
+const cors = require("cors");
 const bodyParser = require('body-parser');
 const apiRouter = require('./apiRouter').router;
 
 //instantiate server
 const app = express();
+
+//cors
+app.use(cors());
 
 //Body Parser configuration
 app.use(bodyParser.urlencoded({ extended: true }));
