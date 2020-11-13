@@ -134,6 +134,20 @@ getUserProfile: function(req, res) {
   });
 },
 
+getUsers: function(req, res) {
+  models.User.findAll().then(function(user){
+    console.log("All users");
+    console.log(user);
+    res.status(201).json(user);
+});
+
+// Project.findAll().then(projects => {
+//   // projects will be an array of all Project instances
+// })
+
+
+},
+
  //TO DO IMPORTANT
 
    updateUserProfile: function(req, res) {
